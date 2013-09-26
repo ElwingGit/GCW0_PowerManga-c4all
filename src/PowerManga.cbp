@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="PowerManga" />
+		<Option makefile="Makefile.gcw0" />
+		<Option makefile_is_custom="1" />
+		<Option pch_mode="2" />
+		<Option compiler="gcw_mips_gnu_gcc_compiler" />
+		<Build>
+			<Target title="all">
+				<Option output="bin/Release/PowerManga" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcw_mips_gnu_gcc_compiler" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+				<MakeCommands>
+					<Build command="$make -f $makefile $target" />
+					<CompileFile command="$make -f $makefile $file" />
+					<Clean command="$make -f $makefile clean" />
+					<DistClean command="$make -f $makefile distclean$target" />
+					<AskRebuildNeeded command="$make -q -f $makefile $target" />
+					<SilentBuild command="$make -s -f $makefile $target" />
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="Makefile.gcw0" />
+		<Unit filename="assembler.h" />
+		<Unit filename="bonus.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="bonus.h" />
+		<Unit filename="c4all.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="c4all.h" />
+		<Unit filename="config.h" />
+		<Unit filename="config_file.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="config_file.h" />
+		<Unit filename="congratulations.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="congratulations.h" />
+		<Unit filename="counter_shareware.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="counter_shareware.h" />
+		<Unit filename="curve_phase.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="curve_phase.h" />
+		<Unit filename="display.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="display.h" />
+		<Unit filename="display_sdl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="display_x11.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="electrical_shock.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="electrical_shock.h" />
+		<Unit filename="enemies.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="enemies.h" />
+		<Unit filename="energy_gauge.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="energy_gauge.h" />
+		<Unit filename="explosions.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="explosions.h" />
+		<Unit filename="extra_gun.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="extra_gun.h" />
+		<Unit filename="gfx_wrapper.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="gfx_wrapper.h" />
+		<Unit filename="gfxroutines.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="gfxroutines.h" />
+		<Unit filename="grid_phase.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="grid_phase.h" />
+		<Unit filename="guardians.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="guardians.h" />
+		<Unit filename="images.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="images.h" />
+		<Unit filename="inits_game.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lispreader.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lispreader.h" />
+		<Unit filename="log_recorder.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="log_recorder.h" />
+		<Unit filename="lonely_foes.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lonely_foes.h" />
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="menu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="menu.h" />
+		<Unit filename="menu_sections.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="menu_sections.h" />
+		<Unit filename="meteors_phase.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="meteors_phase.h" />
+		<Unit filename="movie.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="movie.h" />
+		<Unit filename="options_panel.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="options_panel.h" />
+		<Unit filename="powermanga.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="powermanga.h" />
+		<Unit filename="satellite_protections.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="satellite_protections.h" />
+		<Unit filename="scale2x.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="scale2x.h" />
+		<Unit filename="scale3x.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="scale3x.h" />
+		<Unit filename="scalebit.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="scalebit.h" />
+		<Unit filename="script_page.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="script_page.h" />
+		<Unit filename="scrolltext.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="scrolltext.h" />
+		<Unit filename="sdl_mixer.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sdl_mixer.h" />
+		<Unit filename="shockwave.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="shockwave.h" />
+		<Unit filename="shots.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="shots.h" />
+		<Unit filename="spaceship.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="spaceship.h" />
+		<Unit filename="spaceship_weapons.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="spaceship_weapons.h" />
+		<Unit filename="special_keys.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sprites_string.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sprites_string.h" />
+		<Unit filename="starfield.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="starfield.h" />
+		<Unit filename="text_overlay.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="text_overlay.h" />
+		<Unit filename="texts.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="texts.h" />
+		<Unit filename="tools.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tools.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

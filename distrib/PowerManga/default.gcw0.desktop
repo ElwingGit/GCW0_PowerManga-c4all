@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=PowerManga
+Comment=PowerManga shmup
+Exec=LD_LIBRARY_PATH=. ./powermanga.dge
+Icon=icon
+Categories=games;
+X-OD-Manual=readme.txt

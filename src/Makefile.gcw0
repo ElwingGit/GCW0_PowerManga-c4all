@@ -1,0 +1,107 @@
+#
+# PowerManga GP2X make file
+#
+C4ALL = true
+
+CROSS_COMPILE = /opt/gcw0-toolchain/usr/bin/mipsel-linux-
+
+SDL_CONFIG := /opt/gcw0-toolchain/usr/mipsel-gcw0-linux-uclibc/sysroot/usr/bin/sdl-config
+SDL_CFLAGS := $(shell $(SDL_CONFIG) --cflags)
+SDL_LDLIBS := $(shell $(SDL_CONFIG) --libs)
+
+CXX = $(CROSS_COMPILE)g++
+CC = $(CROSS_COMPILE)gcc
+LD = $(CROSS_COMPILE)g++
+STRIP = $(CROSS_COMPILE)strip
+
+DEFINES = -DPOWERMANGA_GCCW0 -DUSE_SDLMIXER
+
+LIBS := -lvorbisidec -lSDL_mixer
+
+# -lmad
+
+CC_OPTS		= -std=c99 -mips32 -mhard-float $(DEFINES) -O2 -G0
+#-g3 -O0
+#-O2 -G0
+
+CFLAGS		= $(SDL_CFLAGS) $(CC_OPTS)
+CXXFLAGS	= $(CFLAGS)
+LDFLAGS		= $(SDL_LDLIBS) $(CC_OPTS) $(LIBS)
+
+#CCFLAGS := -std=c99 -Wall -Wshadow -O2 -mcpu=arm920 -mtune=arm920t -fstrict-aliasing -DPOWERMANGA_GP2X
+#CCFLAGS += -I/usr/local/gp2xdev/include/ $(SDL_CFLAGS) $(DEFINES)
+
+  #display_x11.c \
+
+TARGET = powermanga.dge
+SRC = bonus.c \
+  counter_shareware.c \
+  congratulations.c \
+  config_file.c \
+  curve_phase.c \
+  display.c \
+  display_sdl.c \
+  electrical_shock.c \
+  enemies.c \
+  energy_gauge.c \
+  explosions.c \
+  extra_gun.c \
+  gfx_wrapper.c \
+  gfxroutines.c \
+  grid_phase.c \
+  guardians.c \
+  images.c \
+  inits_game.c \
+  lispreader.c \
+  log_recorder.c \
+  lonely_foes.c \
+  main.c \
+  menu.c \
+  menu_sections.c \
+  meteors_phase.c \
+  movie.c \
+  options_panel.c \
+  powermanga.c \
+  scalebit.c \
+  scale2x.c \
+  scale3x.c \
+  sdl_mixer.c \
+  satellite_protections.c \
+  scrolltext.c \
+  spaceship.c \
+  spaceship_weapons.c \
+  special_keys.c \
+  sprites_string.c \
+  shots.c \
+  shockwave.c \
+  script_page.c \
+  starfield.c \
+  text_overlay.c \
+  texts.c \
+  tools.c
+
+ifeq ($(C4ALL), true)
+    SPARROW_FOLDER = ../../sparrow3d
+
+    CFLAGS += -DC4ALL -I$(SPARROW_FOLDER) -DGCW
+    LDFLAGS += -lsparrowNet -lsparrow3d -L$(SPARROW_FOLDER)/build/gcw/sparrow3d
+    SRC += c4all.c
+endif
+
+all : $(TARGET)
+
+OBJS = $(SRC:.c=.o)
+DEPS = $(SRC:.c=.d)
+
+$(TARGET): $(OBJS)
+	$(LD) $(LDFLAGS) -s -lm -o $@ $(OBJS)
+	$(STRIP) $(TARGET)
+
+#-static
+.c.o:
+	$(CC) $(CFLAGS) -MMD -c $< -o $*.o
+
+clean:
+	rm -f $(TARGET) *.o *.d
+
+-include $(DEPS)

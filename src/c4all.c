@@ -33,8 +33,10 @@ char* GetDefaultName(){
     if(defaultName[0]=='\0'){
         spInitNet();
         spNetC4AProfilePointer profile = spNetC4AGetProfile();
-        for(int i = 0;i<3;i++){
-            defaultName[i]=profile->shortname[i];
+        if(profile!=NULL){
+            for(int i = 0;i<3;i++){
+                defaultName[i]=profile->shortname[i];
+            }
         }
         spQuitNet();
     }
@@ -48,32 +50,29 @@ char* GetDefaultName(){
  * @return return true when successfull
  */
 bool PublishScore(int difficulty, long score){
-    char* c4all_command;
+    char* c4allGameName;
     switch(difficulty){
     case 0:
-        c4all_command = "PowerManga_e";
+        c4allGameName = "PowerManga_e";
         break;
     case 1:
-        c4all_command = "PowerManga_n";
+        c4allGameName = "PowerManga_n";
         break;
     case 2:
-        c4all_command = "PowerManga_h";
+        c4allGameName = "PowerManga_h";
         break;
     default:
         LOG_ERR("<c4all - PublishScore> unknown difficulty");
         return false;
     }
-    LOG_INF("<c4all> - %s - Score: %lu",c4all_command,score);
+    LOG_INF("<c4all> - %s - Score: %lu",c4allGameName,score);
 
     spInitNet();
     spNetC4AProfilePointer profile = spNetC4AGetProfile();
-    if (profile){
-        //bad... reuse c4all_command
+    if (profile!=NULL){
         spNetC4AScorePointer pointsScore = NULL;
-        //spNetC4AGetScore(&pointsScore,profile,c4all_command,15000);
-        spNetC4ACommitScore(profile,c4all_command,score,&pointsScore,5000); //Timeout 15 Seconds
+        spNetC4ACommitScore(profile,c4allGameName,score,&pointsScore,5000); //Timeout 5 Seconds
         while (spNetC4AGetStatus() == SP_C4A_PROGRESS){ //Wait for the thread
-            //spSleep(200); //Wait at least 200 µs
             SDL_Delay(200);
         }
         switch(spNetC4AGetStatus()){

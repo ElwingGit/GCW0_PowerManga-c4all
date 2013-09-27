@@ -37,6 +37,10 @@ char* GetDefaultName(){
             for(int i = 0;i<3;i++){
                 defaultName[i]=profile->shortname[i];
             }
+        }else{
+            defaultName[0] = ' ';
+            defaultName[1] = ' ';
+            defaultName[2] = ' ';
         }
         spQuitNet();
     }

@@ -1,11 +1,11 @@
-/** 
- * @file menu_sections.c 
- * @brief hanlde high score table, about and order menu sections 
- * @created 1998-06-29 
- * @date 2012-08-26 
+/**
+ * @file menu_sections.c
+ * @brief hanlde high score table, about and order menu sections
+ * @created 1998-06-29
+ * @date 2012-08-26
  * @author Bruno Ethvignot
  */
-/* 
+/*
  * copyright (c) 1998-2012 TLK Games all rights reserved
  * $Id: menu_sections.c,v 1.42 2012/08/26 15:44:26 gurumeditation Exp $
  *
@@ -156,7 +156,7 @@ static Uint32 scores_anim_speed_count = 0;
 static Uint32 delay_counter = 0;
 static sprite_string_struct *about_string = NULL;
 
-/* 
+/*
  * text of order menu
  */
 /** List of all the strings composing the high score table */
@@ -321,7 +321,7 @@ about_load_text (void)
 }
 
 /**
- * About section: Release text data of the 
+ * About section: Release text data of the
  */
 static void
 about_release_memory ()
@@ -443,7 +443,7 @@ menu_section_set (Uint32 section_code)
 
 /**
  * Check if the player enter currently his name
- * @return TRUE if the player enter his name 
+ * @return TRUE if the player enter his name
  */
 bool
 is_playername_input (void)
@@ -764,8 +764,8 @@ high_scores_sort (void)
   return rank;
 }
 
-/** 
- * Load high scores file 
+/**
+ * Load high scores file
  * @return File data buffer pointer
  */
 static char *
@@ -835,7 +835,7 @@ high_scores_load_file (void)
   return filedata;
 }
 
-/** 
+/**
  * Load high scores table
  */
 static void
@@ -854,8 +854,8 @@ high_scores_load (void)
       return;
     }
 
-  /* 
-   * copy data file into memory structure 
+  /*
+   * copy data file into memory structure
    */
   ptr8 = filedata;
   /* copy players names */
@@ -864,6 +864,11 @@ high_scores_load (void)
       for (j = 0; j < PLAYERNAME_LENGHT; j++)
         {
           high_scores_names[i][j] = *(ptr8++);
+        }
+        if(strlen(high_scores_names[i])!=3){
+            high_scores_names[i][0] = ' ';
+            high_scores_names[i][1] = ' ';
+            high_scores_names[i][2] = ' ';
         }
     }
   /* copy players scores */
@@ -890,7 +895,7 @@ high_scores_load (void)
 }
 
 /**
- * Create a new high scores table 
+ * Create a new high scores table
  */
 static void
 high_scores_create (void)
@@ -1091,8 +1096,8 @@ gameover_run (void)
     }
 }
 
-/** 
-* High score: animation of each char separately, one by one 
+/**
+* High score: animation of each char separately, one by one
 */
 static void
 high_score_anim (void)
@@ -1232,7 +1237,7 @@ high_scores_draw (void)
 }
 
 /**
- * About section: initialize, create structure of the sprites string 
+ * About section: initialize, create structure of the sprites string
  * @return TRUE if it completed successfully or FALSE otherwise
  */
 static bool
@@ -1536,7 +1541,7 @@ order_initialize (void)
 }
 
 /**
- * Order section: display text Commodore-64 like 
+ * Order section: display text Commodore-64 like
  */
 static void
 order_run (void)
@@ -2141,7 +2146,7 @@ check_if_enable_menu (void)
  F5:  supprime la ligne en cours
 .THIS..PROGRAM..
 IS FREE SOFTWARE
-....YOU..CAN.... 
+....YOU..CAN....
 ..REDISTRIBUTE..
 ...IT..AND/OR...
 ...MODIFY..IT...

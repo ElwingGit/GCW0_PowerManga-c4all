@@ -1297,6 +1297,7 @@ sprites_string_input_code (sprite_string_struct * sprite_str, Sint32 keycode)
 #else
     case XK_BackSpace:
 #endif
+#ifndef GCW
       if (sprite_str->cursor_pos > 0)
         {
           j = sprite_str->cursor_pos;
@@ -1312,26 +1313,46 @@ sprites_string_input_code (sprite_string_struct * sprite_str, Sint32 keycode)
       sprite_str->string[sprite_str->num_of_chars - 1] = ' ';
       sprite_str->cursor_pos--;
       sprite_chars_to_image (sprite_str);
+#endif
       break;
 #ifdef POWERMANGA_SDL
     case SDLK_DELETE:
 #else
     case XK_Delete:
 #endif
+#ifndef GCW
       for (i = sprite_str->cursor_pos; i <= sprite_str->num_of_chars - 2; i++)
         {
           sprite_str->string[i] = sprite_str->string[i + 1];
         }
       sprite_str->string[sprite_str->num_of_chars - 1] = ' ';
       sprite_chars_to_image (sprite_str);
+#endif
       break;
 #ifdef POWERMANGA_SDL
     case SDLK_RETURN:
       break;
+#ifdef GCW
+    case SDLK_UP:
+      sprite_str->string[sprite_str->cursor_pos]++;
+      if(sprite_str->string[sprite_str->cursor_pos]>'z'){
+          sprite_str->string[sprite_str->cursor_pos] = ' ';
+      }
+      sprite_chars_to_image (sprite_str);
+      break;
+    case SDLK_DOWN:
+      sprite_str->string[sprite_str->cursor_pos]--;
+      if(sprite_str->string[sprite_str->cursor_pos]<' '){
+          sprite_str->string[sprite_str->cursor_pos] = 'z';
+      }
+      sprite_chars_to_image (sprite_str);
+      break;
+#else
     case SDLK_UP:
       break;
     case SDLK_DOWN:
       break;
+#endif
     case SDLK_LSHIFT:
       break;
     case SDLK_RSHIFT:
@@ -1367,10 +1388,28 @@ sprites_string_input_code (sprite_string_struct * sprite_str, Sint32 keycode)
 #else
     case XK_Return:
       break;
+
+#ifdef GCW
+    case XK_Up:
+      sprite_str->string[sprite_str->cursor_pos]++;
+      if(sprite_str->string[sprite_str->cursor_pos]>'z'){
+          sprite_str->string[sprite_str->cursor_pos] = ' ';
+      }
+      sprite_chars_to_image (sprite_str);
+      break;
+    case XK_Down:
+      sprite_str->string[sprite_str->cursor_pos]--;
+      if(sprite_str->string[sprite_str->cursor_pos]<' '){
+          sprite_str->string[sprite_str->cursor_pos] = 'z';
+      }
+      sprite_chars_to_image (sprite_str);
+      break;
+#else
     case XK_Up:
       break;
     case XK_Down:
       break;
+#endif
     case XK_Shift_L:
       break;
     case XK_Shift_R:
@@ -1405,6 +1444,7 @@ sprites_string_input_code (sprite_string_struct * sprite_str, Sint32 keycode)
       break;
 #endif
     default:
+#ifndef GCW
       keycode = keycode & 127;
       if (keycode >= ' ' && keycode <= 'z')
         {
@@ -1418,6 +1458,8 @@ sprites_string_input_code (sprite_string_struct * sprite_str, Sint32 keycode)
           sprite_str->cursor_pos++;
           sprite_chars_to_image (sprite_str);
         }
+#endif
+      break;
     }
 
   /* checks the cursor position */

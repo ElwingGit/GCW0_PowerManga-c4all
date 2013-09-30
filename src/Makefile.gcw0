@@ -14,7 +14,7 @@ CC = $(CROSS_COMPILE)gcc
 LD = $(CROSS_COMPILE)g++
 STRIP = $(CROSS_COMPILE)strip
 
-DEFINES = -DPOWERMANGA_GCCW0 -DUSE_SDLMIXER
+DEFINES = -DGCW -DUSE_SDLMIXER
 
 LIBS := -lvorbisidec -lSDL_mixer
 
@@ -83,7 +83,7 @@ SRC = bonus.c \
 ifeq ($(C4ALL), true)
     SPARROW_FOLDER = ../../sparrow3d
 
-    CFLAGS += -DC4ALL -I$(SPARROW_FOLDER) -DGCW
+    CFLAGS += -DC4ALL -I$(SPARROW_FOLDER)
     LDFLAGS += -lsparrowNet -lsparrow3d -L$(SPARROW_FOLDER)/build/gcw/sparrow3d
     SRC += c4all.c
 endif

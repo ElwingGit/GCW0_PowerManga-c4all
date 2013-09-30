@@ -47,11 +47,11 @@
 
 #ifdef POWERMANGA_SDL
 
-#if defined(POWERMANGA_GP2X) || defined(_WIN32_WCE) || defined(POWERMANGA_GCCW0)
+#if defined(POWERMANGA_GP2X) || defined(_WIN32_WCE) || defined(GCW)
 static Uint32 display_offset_y = 0;
 #endif
 
-#if defined(POWERMANGA_GP2X) || defined(POWERMANGA_GCCW0)
+#if defined(POWERMANGA_GP2X) || defined(GCW)
 /* GP2X button codes, as received through SDL joystick events */
 typedef enum
 {
@@ -330,7 +330,7 @@ init_video_mode (void)
     {
       gp2x_buttons[i] = FALSE;
     }192.168.1.33
-#elif defined(POWERMANGA_GCCW0)
+#elif defined(GCW)
   Uint32 width, height;
   width = 320;
   height = 240;
@@ -432,7 +432,7 @@ init_video_mode (void)
   LOG_INF ("SDL_SetVideoMode() successful window_width: %i;"
            " window_height: %i; bits_per_pixel: %i",
            width, height, bits_per_pixel);
-#if defined(POWERMANGA_GP2X) || defined(POWERMANGA_GCCW0)
+#if defined(POWERMANGA_GP2X) || defined(GCW)
   /* The native resolution is 320x200, so we scale up to 320x240
    * when updating the screen */
   window_height = display_height;
@@ -645,7 +645,7 @@ create_palettes (void)
 static void
 display_handle_console_buttons (SDL_Event * event)
 {
-#if defined(POWERMANGA_GP2X) || defined(POWERMANGA_GCCW0)
+#if defined(POWERMANGA_GP2X) || defined(GCW)
   if (event->jbutton.button >= GP2X_NUM_BUTTONS)
     {
       return;
@@ -1305,7 +1305,7 @@ static void
 get_rect (SDL_Rect * rect, Sint16 x, Sint16 y, Sint16 w, Sint16 h)
 {
   rect->x = x;
-#if defined (POWERMANGA_GP2X) || defined (_WIN32_WCE) || defined(POWERMANGA_GCCW0)
+#if defined (POWERMANGA_GP2X) || defined (_WIN32_WCE) || defined(GCW)
   rect->y = y + (Sint16) display_offset_y;
 #else
   rect->y = y;

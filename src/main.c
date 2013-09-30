@@ -92,7 +92,7 @@ returnToMenu (void)
 {
   sceKernelExitGame ();
 }
-#elif POWERMANGA_GCCW0
+#elif GCW
 void returnToMenu (void)
 {
   exit(0);

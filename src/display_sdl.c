@@ -51,7 +51,7 @@
 static Uint32 display_offset_y = 0;
 #endif
 
-#if defined(POWERMANGA_GP2X) || defined(GCW)
+#ifdef POWERMANGA_GP2X
 /* GP2X button codes, as received through SDL joystick events */
 typedef enum
 {
@@ -329,16 +329,12 @@ init_video_mode (void)
   for (i = 0; i < GP2X_NUM_BUTTONS; i++)
     {
       gp2x_buttons[i] = FALSE;
-    }192.168.1.33
+    }
 #elif defined(GCW)
   Uint32 width, height;
   width = 320;
   height = 240;
   display_offset_y = (height - display_height) / 2;
-  for (i = 0; i < GP2X_NUM_BUTTONS; i++)
-    {
-      gp2x_buttons[i] = FALSE;
-    }
 #elif defined(POWERMANGA_PSP)
   for (i = 0; i < PSP_NUM_BUTTONS; i++)
     {
@@ -645,7 +641,7 @@ create_palettes (void)
 static void
 display_handle_console_buttons (SDL_Event * event)
 {
-#if defined(POWERMANGA_GP2X) || defined(GCW)
+#ifdef POWERMANGA_GP2X
   if (event->jbutton.button >= GP2X_NUM_BUTTONS)
     {
       return;
@@ -1178,7 +1174,14 @@ void
 key_status (Uint8 * k)
 {
   keys_down[K_ESCAPE] = k[SDLK_ESCAPE];
+#ifdef GCW
+  //I don't like doing that here, but it's by far the easiest way to change mapping completely without forgeting everything....
+  keys_down[K_CTRL] = k[SDLK_LALT];
+  keys_down[K_SPACE] = k[SDLK_LCTRL];
+#else
   keys_down[K_CTRL] = k[SDLK_LCTRL];
+  keys_down[K_SPACE] = k[SDLK_SPACE];
+#endif
   keys_down[K_CTRL] |= k[SDLK_RCTRL];
   keys_down[K_RETURN] = k[SDLK_RETURN];
   keys_down[K_PAUSE] = k[SDLK_PAUSE];
@@ -1207,7 +1210,6 @@ key_status (Uint8 * k)
   keys_down[K_F11] = k[SDLK_F11];
   keys_down[K_F12] = k[SDLK_F12];
   keys_down[K_INSERT] = k[SDLK_INSERT];
-  keys_down[K_SPACE] = k[SDLK_SPACE];
   if (is_reverse_ctrl)
     {
       keys_down[K_LEFT] = k[SDLK_DOWN];

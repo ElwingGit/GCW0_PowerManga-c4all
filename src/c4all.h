@@ -26,8 +26,13 @@
 extern "C"
 {
 #endif
+
+/** Maximum number of high scores in the high score file */
+#define MAX_OF_HIGH_SCORES 5
+
   char* GetDefaultName();
-  bool PublishScore(int difficulty, long score);
+  void PublishScore(int difficulty, long score);
+  void TryUpdateScoreFromC4all(Sint32 high_scores_points[MAX_OF_HIGH_SCORES], char high_scores_names[MAX_OF_HIGH_SCORES][4]);
 
 #ifdef __cplusplus
 }
